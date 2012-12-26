@@ -1,4 +1,5 @@
 Copyright 2012 Ryan Taylor Long
+Copyright 2012 Wayne Conrad
 
 This software is distributed under the [MIT License](http://opensource.org/licenses/MIT):
 
