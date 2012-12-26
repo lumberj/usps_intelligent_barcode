@@ -3,7 +3,17 @@ GEM
   specs:
     andand (1.3.3)
     diff-lcs (1.1.3)
+    git (1.2.5)
+    jeweler (1.8.4)
+      bundler (~> 1.0)
+      git (>= 1.2.5)
+      rake
+      rdoc
+    json (1.7.5)
     memoizer (1.0.1)
+    rake (10.0.3)
+    rdoc (3.12)
+      json (~> 1.4)
     rspec (2.12.0)
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
@@ -17,6 +27,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  andand
-  memoizer
-  rspec
+  andand (~> 1.3)
+  jeweler (~> 1.8)
+  memoizer (~> 1.0)
+  rspec (~> 2.12)

@@ -1,8 +1,9 @@
 source 'http://rubygems.org'
 
-gem 'andand'
-gem 'memoizer'
+gem 'andand', '~> 1.3'
+gem 'memoizer', '~> 1.0'
 
-group :test do
-  gem 'rspec'
+group :development do
+  gem 'rspec', '~> 2.12'
+  gem 'jeweler', '~> 1.8'
 end
