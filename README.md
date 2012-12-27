@@ -10,9 +10,9 @@ Barcode fonts](https://ribbs.usps.gov/onecodesolution/download.cfm).
 This project was forked from :
 
 [rtlong/USPS-intellient-barcode](https://github.com/rtlong/USPS-intelligent-barcode)
-(github) by Ryan Taylor, in order to add tests and refactor.  It is
-_not_ a drop-in replacement: I renamed most methods and classes, and
-eliminated the #draw method.
+(github) by Ryan Taylor Long, in order to add tests and refactor.  It
+is _not_ a drop-in replacement: I renamed most methods and classes,
+and eliminated the #draw method.
 
 ## INSTALL
 
@@ -53,5 +53,5 @@ Wayne Conrad <wconrad@yagni.com>
 
 ## CREDITS
 
-Thanks to Ryan Taylor for his original work, without which I would
-have been lost in the USPS specification.
+Thanks to Ryan Taylor Long for his original work, without which I
+would have been lost in the USPS specification.
