@@ -51,18 +51,6 @@ module Imb
       specify {o1.should_not == o4}
     end
 
-    describe '#most_significant_digit' do
-      specify do
-        BarcodeId.new(12).most_significant_digit.should == 1
-      end
-    end
-
-    describe '#least_significant_digit' do
-      specify do
-        BarcodeId.new(12).least_significant_digit.should == 2
-      end
-    end
-
     describe '#validate' do
 
       let(:long_mailer_id?) {mock 'long_mailer_id?'}

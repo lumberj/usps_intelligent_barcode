@@ -1,6 +1,13 @@
 module Imb
 
+  # This class represents the mail piece's serial number.
+
   class SerialNumber
+
+    # Turn the argument into a SerialNumber if possible.  Accepts:
+    # * SerialNumber
+    # * String
+    # * Integer
 
     def self.coerce(o)
       case o
@@ -15,9 +22,14 @@ module Imb
       end
     end
 
+    # Create a new serial number from an integer.
+
     def initialize(value)
       @value = value
     end
+
+    # Validate the value.  Raises ArgumentError if out of range.
+    # * +long_mailer_id+ - truthy if the mailer ID is long (9 digits).
 
     def validate(long_mailer_id)
       range = 0..max_value(long_mailer_id)
@@ -26,17 +38,23 @@ module Imb
       end
     end
 
+    # Return true if +o+ is equal.  +o+ may be any object which ::coerce
+    # can turn into a SerialNumber.
+
     def ==(o)
       SerialNumber.coerce(o).to_i == to_i
     rescue ArgumentError
       false
     end
 
+    # Add this object's value to target, shifting it left as many
+    # digts as are needed to make room.
+
     def shift_and_add_to(target, long_mailer_id)
       target * 10 ** num_digits(long_mailer_id) + to_i
     end
 
-    protected
+    # Return the integer value of the serial number
 
     def to_i
       @value

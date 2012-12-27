@@ -1,14 +1,40 @@
+# The namespace for everything in this gem.
+
 module Imb
+
+  # This class represents a barcode
 
   class Barcode
 
     include Memoizer
 
+    # The barcode id, an instance of BarcodeId
     attr_reader :barcode_id
+
+    # The service type, an instance of ServiceType
     attr_reader :service_type
+
+    # The mailer id, an instance of MailerId
     attr_reader :mailer_id
+
+    # The serial number, and instance of SerialNumber
     attr_reader :serial_number
+
+    # The routing code, an instance of RoutingCode
     attr_reader :routing_code
+
+    # === Arguments
+
+    # * +barcode_id+ - Nominally a String, but can be anything that
+    #   BarcodeId::coerce will accept.
+    # * +service_type+ - Nominally a String, but can be anything that
+    #   ServiceType::coerce will accept.
+    # * +mailer_id+ - Nominally a String, but can be anything that
+    #   MailerId::coerce will accept.
+    # * +serial_number+ - Nominally a String, but can be anything that
+    #   SerialNumber::coerce will accept.
+    # * +routing_code+ - Nominally a String, but can be anything that
+    #   RoutingCode::coerce will accept.
 
     def initialize(barcode_id,
                    service_type,
@@ -22,15 +48,26 @@ module Imb
       @routing_code = RoutingCode.coerce(routing_code)
       validate_components
     end
-    
+
+    # Return a string that represents the barcode.  Each character of
+    # the string will be one of:
+    # * 'T' for a tracking mark (neither ascender nor descender)
+    # * 'A' for an ascender mark
+    # * 'D' for a descender mark
+    # * 'F' for a full mark (both ascender and descender)
+    # Print the barcode using this string and one of the USPS
+    # Intelligent Mail Barcode fonts
+
     def barcode_letters
       barcode.map { |bar| "TDAF"[bar..bar] }.join
     end
     
     private
 
+    # :stopdoc:
     BAR_MAP = BarMap.new
     CODEWORD_MAP = CodewordMap.new
+    # :startdoc:
 
     def validate_components
       components.each do |component|

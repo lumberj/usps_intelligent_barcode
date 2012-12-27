@@ -1,6 +1,19 @@
 module Imb
 
+  # This class represents a Barcode ID
+
   class BarcodeId
+
+    # The allowable range of a barcode ID
+    RANGE = 0..94
+
+    # The allowable range of a barcode ID's least significant digit
+    LSD_RANGE = 0..4
+
+    # Turn the argument into a BarcodeID if possible.  Accepts:
+    # * BarcodeId
+    # * String
+    # * Integer
 
     def self.coerce(o)
       case o
@@ -15,18 +28,27 @@ module Imb
       end
     end
 
+    # Create a new BarcodeId
+    # * +value+ - The integer value of the barcode ID
+
     def initialize(value)
       @value = value
     end
+
+    # Validate the value.  Raises ArgumentError if out of range.
+    # * +long_mailer_id+ - truthy if the mailer ID is long (9 digits).
 
     def validate(long_mailer_id)
       unless RANGE === @value
         raise ArgumentError, "Must be #{RANGE}"
       end
-      unless LSB_RANGE === least_significant_digit
-        raise ArgumentError, "Least significant digit must be #{LSB_RANGE}"
+      unless LSD_RANGE === least_significant_digit
+        raise ArgumentError, "Least significant digit must be #{LSD_RANGE}"
       end
     end
+
+    # Return true if +o+ is equal.  +o+ may be any object which ::coerce
+    # can turn into a BarcodeId.
 
     def ==(o)
       BarcodeId.coerce(o).to_i == to_i
@@ -34,13 +56,8 @@ module Imb
       false
     end
 
-    def most_significant_digit
-      @value / 10
-    end
-
-    def least_significant_digit
-      @value % 10
-    end
+    # Add this object's value to target, shifting it left as many
+    # digts as are needed to make room.
 
     def shift_and_add_to(target, long_mailer_id)
       target *= 10
@@ -50,7 +67,7 @@ module Imb
       target
     end
 
-    protected
+    # Return the integer value of the barcode ID
 
     def to_i
       @value
@@ -58,8 +75,13 @@ module Imb
 
     private
 
-    RANGE = 0..94
-    LSB_RANGE = 0..4
+    def most_significant_digit
+      @value / 10
+    end
+
+    def least_significant_digit
+      @value % 10
+    end
 
   end
 
