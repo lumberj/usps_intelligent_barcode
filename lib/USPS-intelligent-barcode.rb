@@ -2,4 +2,4 @@ require 'andand'
 require 'memoizer'
 require 'yaml'
 
-require 'imb/autoload.rb'
+require 'USPS-intelligent-barcode/autoload.rb'

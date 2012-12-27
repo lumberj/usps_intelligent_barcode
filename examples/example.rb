@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'imb'
+require 'USPS-intelligent-barcode'
 
 barcode_id = '01'
 service_type = '234'
