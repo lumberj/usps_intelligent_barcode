@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "USPS-intelligent-barcode"
-  s.version = "0.1.2"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Wayne Conrad"]
@@ -14,13 +14,13 @@ Gem::Specification.new do |s|
   s.email = "wayne@databill.com"
   s.extra_rdoc_files = [
     "LICENSE.md",
-    "README.md"
+    "README.rdoc"
   ]
   s.files = [
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.md",
-    "README.md",
+    "README.rdoc",
     "Rakefile",
     "USPS-intelligent-barcode.gemspec",
     "VERSION",
