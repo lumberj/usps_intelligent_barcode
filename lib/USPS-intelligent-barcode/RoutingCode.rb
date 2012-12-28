@@ -1,5 +1,7 @@
 module Imb
 
+  # Represents a routing code
+
   class RoutingCode
 
     # Turn the argument into a RoutingCode if possible.  Accepts:

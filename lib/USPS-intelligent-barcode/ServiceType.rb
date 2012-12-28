@@ -1,5 +1,7 @@
 module Imb
 
+  # This class represents a service type.
+
   class ServiceType
 
     # The valid range of a service type

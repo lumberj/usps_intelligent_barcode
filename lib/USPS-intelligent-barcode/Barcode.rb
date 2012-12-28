@@ -4,7 +4,8 @@ require 'USPS-intelligent-barcode/CodewordMap'
 
 module Imb
 
-  # This class represents a barcode
+  # This class represents a barcode.  It is the main class: you will
+  # probably seldom need to touch any of the others.
 
   class Barcode
 

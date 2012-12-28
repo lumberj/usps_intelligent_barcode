@@ -1,10 +1,17 @@
 module Imb
 
+  # Maps codewords to characters.  This class is internal and may
+  # change.
+
   class CodewordMap
+
+    # Constructor
 
     def initialize
       @characters = load_characters
     end
+
+    # Given an array of codewords, ruturn their characters.
 
     def characters(codewords)
       codewords.map do |codeword|
