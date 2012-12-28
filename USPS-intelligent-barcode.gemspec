@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "USPS-intelligent-barcode"
-  s.version = "0.2.0"
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Wayne Conrad"]
-  s.date = "2012-12-27"
+  s.date = "2012-12-28"
   s.description = "A pure Ruby gem to generate a USPS Intelligent Mail barcode.  It generates the string of characters to print with one of the USPS Intelligent Mail barcode fonts."
   s.email = "wayne@databill.com"
   s.extra_rdoc_files = [
@@ -38,7 +38,6 @@ Gem::Specification.new do |s|
     "lib/USPS-intelligent-barcode/RoutingCode.rb",
     "lib/USPS-intelligent-barcode/SerialNumber.rb",
     "lib/USPS-intelligent-barcode/ServiceType.rb",
-    "lib/USPS-intelligent-barcode/autoload.rb",
     "lib/USPS-intelligent-barcode/bar_to_character_mapping.yml",
     "lib/USPS-intelligent-barcode/codeword_to_character_mapping.yml",
     "spec/BarMap_spec.rb",
