@@ -1,3 +1,5 @@
+require 'USPS-intelligent-barcode/CodewordMap'
+
 # The namespace for everything in this gem.
 
 module Imb

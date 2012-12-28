@@ -1,3 +1,5 @@
+require 'USPS-intelligent-barcode/CharacterPosition'
+
 module Imb
 
   class BarMap

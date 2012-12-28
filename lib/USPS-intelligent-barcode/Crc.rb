@@ -1,3 +1,5 @@
+require 'USPS-intelligent-barcode/NumericConversions'
+
 module Imb
 
   class Crc
