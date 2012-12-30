@@ -104,9 +104,19 @@ module Imb
     end
 
     describe '#shift_and_add_to' do
-      let(:mailer_id) {MailerId.new(999999)}
-      let(:long_mailer_id?) {mock 'long mailer id'}
-      specify {mailer_id.shift_and_add_to(1, long_mailer_id?).should == 1999999}
+
+      context 'short' do
+        let(:mailer_id) {MailerId.new(999999)}
+        let(:long_mailer_id?) {false}
+        specify {mailer_id.shift_and_add_to(1, long_mailer_id?).should == 1999999}
+      end
+
+      context 'long' do
+        let(:mailer_id) {MailerId.new(999999999)}
+        let(:long_mailer_id?) {true}
+        specify {mailer_id.shift_and_add_to(1, long_mailer_id?).should == 1999999999}
+      end
+
     end
 
   end
