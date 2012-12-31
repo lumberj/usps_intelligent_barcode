@@ -20,7 +20,7 @@ Jeweler::Tasks.new do |gem|
   gem.license = "MIT"
   gem.summary = %Q{Generates a USPS Intelligent Mail Barcode.}
   gem.description =
-    ("A pure Ruby gem to generate a USPS Intelligent "\
+    ("A pure Ruby library to generate a USPS Intelligent "\
      "Mail barcode.  It generates the string of characters "\
      "to print with one of the USPS Intelligent Mail barcode "\
      "fonts.")
