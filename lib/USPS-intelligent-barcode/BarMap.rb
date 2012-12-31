@@ -14,14 +14,11 @@ module Imb
     end
 
     # Given an array of intelligent barcode "characters", return an
-    # array of codes for each barcode position.  The codes are:
-    # * 0 - tracking mark (neither ascending nor descending)
-    # * 1 - descending mark
-    # * 2 - ascending mark
-    # * 3 - full mark (both ascending and descending)
-    # @return [[Integer]]
+    # the symbols for each position.
+    # @param [[Integer]] characters array of characters
+    # @return [[BarSymbol]] array of symbols
 
-    def barcode(characters)
+    def symbols(characters)
       @mapping.map do |bar_position|
         bar_position.map(characters)
       end

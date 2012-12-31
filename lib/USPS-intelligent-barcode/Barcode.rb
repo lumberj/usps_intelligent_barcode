@@ -142,7 +142,7 @@ module Imb
     end
 
     def symbols
-      BAR_MAP.barcode(characters_with_fcs_bits_0_through_9)
+      BAR_MAP.symbols(characters_with_fcs_bits_0_through_9)
     end
 
   end
