@@ -62,7 +62,7 @@ module Imb
     # @return [String] A string that represents the barcode.
 
     def barcode_letters
-      barcode.map { |bar| "TDAF"[bar..bar] }.join
+      symbols.map(&:letter).join
     end
     
     private
@@ -141,7 +141,7 @@ module Imb
       end
     end
 
-    def barcode
+    def symbols
       BAR_MAP.barcode(characters_with_fcs_bits_0_through_9)
     end
 

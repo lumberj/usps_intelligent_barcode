@@ -26,8 +26,6 @@ module Imb
 
     private
 
-    # :stopdoc:
-
     LEADING_BITS_TO_IGNORE = 2
     CRC_BITS = 11
     CRC_MSB_MASK = 1 << (CRC_BITS - 1)
@@ -35,8 +33,6 @@ module Imb
     POLYNOMIAL = 0x0F35
     MASK = (1 << CRC_BITS) - 1
     NUM_INPUT_BYTES = 13
-
-    # :startdoc:
 
     def self.crc_byte(crc, byte, leading_bits_to_ignore)
       num_bits = BITS_PER_BYTE - leading_bits_to_ignore

@@ -15,17 +15,14 @@ module Imb
       @ascender_character_position = ascender_character_position
     end
 
-    # Given an array of characters, return a symbol code for this
-    # barcode position.  The symbol codes are:
-    # * 0 - tracking mark (neither ascending nor descending)
-    # * 1 - descending mark
-    # * 2 - ascending mark
-    # * 3 - full mark (both ascending and descending)
+    # Given an array of characters, return a symbol for this
+    # barcode position.
     # @param [[Integer]] characters character codes
-    # @return [Integer] symbol code
+    # @return [BarSymbol] symbol code
 
     def map(characters)
-      2 * ascender_bit(characters) + descender_bit(characters)
+      BarSymbol.make(ascender_bit(characters),
+                     descender_bit(characters))
     end
 
     private

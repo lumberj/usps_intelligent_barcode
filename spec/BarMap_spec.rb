@@ -10,7 +10,7 @@ module Imb
         0x01A3, 0x1BC3, 0x1838, 0x012B, 0x0076,
       ]
     end
-    let(:barcode) do
+    let(:codes) do
       [
         2, 0, 0, 3, 2, 0, 0, 1, 0, 0, 2, 1, 0,
         2, 2, 0, 0, 1, 0, 1, 0, 2, 0, 0, 1, 2,
@@ -22,7 +22,7 @@ module Imb
     let(:bar_map) {BarMap.new}
 
     specify do
-      bar_map.barcode(characters).should == barcode
+      bar_map.barcode(characters).map(&:code).should == codes
     end
 
   end

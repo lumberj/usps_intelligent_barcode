@@ -6,6 +6,8 @@ module Imb
 
     describe '#map' do
 
+      let(:ascender_bit) {mock 'ascender bit'}
+      let(:descender_bit) {mock 'descender bit'}
       let(:characters) {mock 'array of characters'}
       let(:descender_character_position) {mock CharacterPosition}
       let(:ascender_character_position) {mock CharacterPosition}
@@ -13,36 +15,22 @@ module Imb
         BarPosition.new(descender_character_position,
                         ascender_character_position)
       end
+      let(:bar_symbol) {mock BarSymbol}
 
       before(:each) do
         descender_character_position.stub(:extract_bit_from_characters)\
-        .with(characters).and_return(descender_bit)
+        .with(characters)\
+        .and_return(descender_bit)
         ascender_character_position.stub(:extract_bit_from_characters)\
-        .with(characters).and_return(ascender_bit)
+        .with(characters)\
+        .and_return(ascender_bit)
+        BarSymbol.stub(:make)\
+        .with(ascender_bit, descender_bit)\
+        .and_return(bar_symbol)
       end
 
-      context 'without ascender, without descender' do
-        let(:ascender_bit) {0}
-        let(:descender_bit) {0}
-        specify {bar_position.map(characters).should == 0}
-      end
-
-      context 'without ascender, with descender' do
-        let(:ascender_bit) {0}
-        let(:descender_bit) {1}
-        specify {bar_position.map(characters).should == 1}
-      end
-
-      context 'with ascender, without descender' do
-        let(:ascender_bit) {1}
-        let(:descender_bit) {0}
-        specify {bar_position.map(characters).should == 2}
-      end
-
-      context 'with ascender, with descender' do
-        let(:ascender_bit) {1}
-        let(:descender_bit) {1}
-        specify {bar_position.map(characters).should == 3}
+      specify do
+        bar_position.map(characters).should == bar_symbol
       end
 
     end

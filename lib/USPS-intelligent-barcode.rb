@@ -4,6 +4,7 @@ require 'yaml'
 
 require 'USPS-intelligent-barcode/BarMap'
 require 'USPS-intelligent-barcode/BarPosition'
+require 'USPS-intelligent-barcode/BarSymbol'
 require 'USPS-intelligent-barcode/Barcode'
 require 'USPS-intelligent-barcode/BarcodeId'
 require 'USPS-intelligent-barcode/CharacterPosition'
