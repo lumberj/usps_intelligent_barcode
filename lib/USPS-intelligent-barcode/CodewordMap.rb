@@ -1,7 +1,8 @@
 module Imb
 
-  # Maps codewords to characters.  This class is internal and may
-  # change.
+  # @!group Internal
+
+  # Maps codewords to characters.
 
   class CodewordMap
 
@@ -12,6 +13,8 @@ module Imb
     end
 
     # Given an array of codewords, ruturn their characters.
+    # @param [[Integer]] codewords
+    # @return [[Integer]] Array of characters
 
     def characters(codewords)
       codewords.map do |codeword|

@@ -5,7 +5,7 @@ module Imb
   class RoutingCode
 
     # Turn the argument into a RoutingCode if possible.  Accepts:
-    # * RoutingCode
+    # * {RoutingCode}
     # * nil (no routing code)
     # * String of length:
     #   * 0 - no routing code
@@ -13,6 +13,7 @@ module Imb
     #   * 9 - zip + plus4
     #   * 11 - zip + plus4 + delivery point
     # * Array of [zip, plus4, delivery point]
+    # @return [RoutingCode]
 
     def self.coerce(o)
       case o
@@ -28,6 +29,37 @@ module Imb
         raise ArgumentError, 'Cannot coerce to RoutingCode'
       end
     end
+
+    # @return [Integer] The ZIP (or nil)
+    attr_accessor :zip
+
+    # @return [Integer] The plus4 (or nil)
+    attr_accessor :plus4
+
+    # @return [Integer] The delivery point (or nil)
+    attr_accessor :delivery_point
+    
+    # Create a RoutingCode.  Arguments are:
+    # * +zip+ - Integer zip (or nil)
+    # * +plus4+ - Integer plus4 (or nil)
+    # * +delivery_point+ - Integer delivery poitn (or nil)
+
+    def initialize(zip, plus4, delivery_point)
+      @zip = arg_to_i(zip)
+      @plus4 = arg_to_i(plus4)
+      @delivery_point = arg_to_i(delivery_point)
+    end
+
+    # Return true if this object is equal to o
+    # @param [Object] o Any object acceptable to {.coerce}
+
+    def ==(o)
+      RoutingCode.coerce(o).to_a == to_a
+    rescue ArgumentError
+      false
+    end
+
+    # @!group Internal
 
     # Convert a string representation of a routing code into
     # an array that can be passed to the constructor.
@@ -48,47 +80,24 @@ module Imb
       [zip, plus4, delivery_point]
     end
 
-    # Return the ZIP (or nil)
-    attr_accessor :zip
-
-    # Return the plus4 (or nil)
-    attr_accessor :plus4
-
-    # Return the delivery point (or nil)
-    attr_accessor :delivery_point
-    
-    # Create a RoutingCode.  Arguments are:
-    # * +zip+ - Integer zip (or nil)
-    # * +plus4+ - Integer plus4 (or nil)
-    # * +delivery_point+ - Integer delivery poitn (or nil)
-
-    def initialize(zip, plus4, delivery_point)
-      @zip = arg_to_i(zip)
-      @plus4 = arg_to_i(plus4)
-      @delivery_point = arg_to_i(delivery_point)
-    end
-
-    # Validate the value.  Raises ArgumentError if out of range.
-    # * +long_mailer_id+ - truthy if the mailer ID is long (9 digits).
+    # Validate the value.
+    # @param long_mailer_id truthy if the mailer ID is long (9 digits).
+    # @raise ArgumentError if invalid
 
     def validate(long_mailer_id)
     end
 
-    # Return true if +o+ is equal.  +o+ may be any object which ::coerce
-    # can turn into a RoutingCode.
-
-    def ==(o)
-      RoutingCode.coerce(o).to_a == to_a
-    rescue ArgumentError
-      false
-    end
-
     # Add this object's value to target, shifting it left as many
     # digts as are needed to make room.
+    # @param [Integer] target The target to be shifted and added to
+    # @param long_mailer_id truthy if the mailer ID is long (9 digits).
+    # @return [Integer] The new value of the target
 
     def shift_and_add_to(target, long_mailer_id)
       target * 10 ** NUM_DIGITS + convert
     end
+
+    # @!endgroup
 
     protected
 

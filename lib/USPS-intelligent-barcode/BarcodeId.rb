@@ -10,10 +10,12 @@ module Imb
     # The allowable range of a barcode ID's least significant digit
     LSD_RANGE = 0..4
 
-    # Turn the argument into a BarcodeID if possible.  Accepts:
-    # * BarcodeId
+    # Turn the argument into a BarcodeID if possible.  Accepts any of:
+    # * {BarcodeId}
     # * String
     # * Integer
+    # @return [BarcodeId]
+    # @raise [ArgumentError] If the argument cannot be coerced
 
     def self.coerce(o)
       case o
@@ -29,14 +31,32 @@ module Imb
     end
 
     # Create a new BarcodeId
-    # * +value+ - The integer value of the barcode ID
+    # @param [Integer] value The barcode ID
 
     def initialize(value)
       @value = value
     end
 
-    # Validate the value.  Raises ArgumentError if out of range.
-    # * +long_mailer_id+ - truthy if the mailer ID is long (9 digits).
+    # Return true if this object is equal to o
+    # @param [Object] o Any object acceptable to {.coerce}
+
+    def ==(o)
+      BarcodeId.coerce(o).to_i == to_i
+    rescue ArgumentError
+      false
+    end
+
+    # @return [Integer] The integer value of the barcode ID
+
+    def to_i
+      @value
+    end
+
+    # @!group Internal
+
+    # Validate the value.
+    # @param long_mailer_id truthy if the mailer ID is long (9 digits).
+    # @raise ArgumentError if invalid
 
     def validate(long_mailer_id)
       unless RANGE === @value
@@ -47,17 +67,11 @@ module Imb
       end
     end
 
-    # Return true if +o+ is equal.  +o+ may be any object which ::coerce
-    # can turn into a BarcodeId.
-
-    def ==(o)
-      BarcodeId.coerce(o).to_i == to_i
-    rescue ArgumentError
-      false
-    end
-
     # Add this object's value to target, shifting it left as many
     # digts as are needed to make room.
+    # @param [Integer] target The target to be shifted and added to
+    # @param long_mailer_id truthy if the mailer ID is long (9 digits).
+    # @return [Integer] The new value of the target
 
     def shift_and_add_to(target, long_mailer_id)
       target *= 10
@@ -67,11 +81,7 @@ module Imb
       target
     end
 
-    # Return the integer value of the barcode ID
-
-    def to_i
-      @value
-    end
+    # @!endgroup
 
     private
 

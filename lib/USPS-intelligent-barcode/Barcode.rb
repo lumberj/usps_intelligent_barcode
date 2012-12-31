@@ -1,43 +1,44 @@
 require 'USPS-intelligent-barcode/CodewordMap'
 
-# The namespace for everything in this gem.
+# The namespace for everything in this library.
 
 module Imb
 
-  # This class represents a barcode.  It is the main class: you will
-  # probably seldom need to touch any of the others.
+  # This class represents a barcode.
 
   class Barcode
 
     include Memoizer
 
-    # The barcode id, an instance of BarcodeId
+    # @return [BarcodeId]
     attr_reader :barcode_id
 
-    # The service type, an instance of ServiceType
+    # @return [ServiceType]
     attr_reader :service_type
 
-    # The mailer id, an instance of MailerId
+    # @return [MailerId]
     attr_reader :mailer_id
 
-    # The serial number, and instance of SerialNumber
+    # @return [SerialNumber]
     attr_reader :serial_number
 
-    # The routing code, an instance of RoutingCode
+    # @return [RoutingCode]
     attr_reader :routing_code
 
-    # === Arguments
+    # @param 
 
-    # * +barcode_id+ - Nominally a String, but can be anything that
-    #   BarcodeId::coerce will accept.
-    # * +service_type+ - Nominally a String, but can be anything that
-    #   ServiceType::coerce will accept.
-    # * +mailer_id+ - Nominally a String, but can be anything that
-    #   MailerId::coerce will accept.
-    # * +serial_number+ - Nominally a String, but can be anything that
-    #   SerialNumber::coerce will accept.
-    # * +routing_code+ - Nominally a String, but can be anything that
-    #   RoutingCode::coerce will accept.
+    # Create a new barcode
+    #
+    # @param barcode_id [String] Nominally a String, but can be
+    #   anything that {BarcodeId.coerce} will accept.
+    # @param service_type [String] Nominally a String, but can be
+    #   anything that {ServiceType.coerce} will accept.
+    # @param mailer_id [String] Nominally a String, but can be
+    #   anything that {MailerId.coerce} will accept.
+    # @param serial_number [String] Nominally a String, but can be
+    #   anything that {SerialNumber.coerce} will accept.
+    # @param routing_code [String] Nominally a String, but can be
+    #   anything that {RoutingCode.coerce} will accept.
 
     def initialize(barcode_id,
                    service_type,
@@ -52,14 +53,13 @@ module Imb
       validate_components
     end
 
-    # Return a string that represents the barcode.  Each character of
-    # the string will be one of:
+    # Return a string to print using one of the USPS Intelligent Mail
+    # Barcode fonts.  Each character of the string will be one of:
     # * 'T' for a tracking mark (neither ascender nor descender)
     # * 'A' for an ascender mark
     # * 'D' for a descender mark
     # * 'F' for a full mark (both ascender and descender)
-    # Print the barcode using this string and one of the USPS
-    # Intelligent Mail Barcode fonts
+    # @return [String] A string that represents the barcode.
 
     def barcode_letters
       barcode.map { |bar| "TDAF"[bar..bar] }.join

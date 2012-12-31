@@ -1,14 +1,13 @@
 require 'USPS-intelligent-barcode/CharacterPosition'
 
+# @!group Internal
+
 module Imb
 
   # Maps intelligent barcode "characters" to codes that indicate what
-  # type of bar to print at each given position.  This class is
-  # internal and may change.
+  # type of bar to print at each given position.
 
   class BarMap
-
-    # Create.
 
     def initialize
       @mapping = load_mapping
@@ -20,6 +19,7 @@ module Imb
     # * 1 - descending mark
     # * 2 - ascending mark
     # * 3 - full mark (both ascending and descending)
+    # @return [[Integer]]
 
     def barcode(characters)
       @mapping.map do |bar_position|

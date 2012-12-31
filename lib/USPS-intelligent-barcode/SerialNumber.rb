@@ -5,9 +5,10 @@ module Imb
   class SerialNumber
 
     # Turn the argument into a SerialNumber if possible.  Accepts:
-    # * SerialNumber
+    # * {SerialNumber}
     # * String
     # * Integer
+    # @return [SerialNumber]
 
     def self.coerce(o)
       case o
@@ -22,14 +23,32 @@ module Imb
       end
     end
 
-    # Create a new serial number from an integer.
+    # @param [Integer] value
 
     def initialize(value)
       @value = value
     end
 
-    # Validate the value.  Raises ArgumentError if out of range.
-    # * +long_mailer_id+ - truthy if the mailer ID is long (9 digits).
+    # Return true if this object is equal to o
+    # @param [Object] o Any object acceptable to {.coerce}
+
+    def ==(o)
+      SerialNumber.coerce(o).to_i == to_i
+    rescue ArgumentError
+      false
+    end
+
+    # @return [Integer] The value of the serial number
+
+    def to_i
+      @value
+    end
+
+    # @!group Internal
+
+    # Validate the value.
+    # @param long_mailer_id truthy if the mailer ID is long (9 digits).
+    # @raise ArgumentError if invalid
 
     def validate(long_mailer_id)
       range = 0..max_value(long_mailer_id)
@@ -38,27 +57,17 @@ module Imb
       end
     end
 
-    # Return true if +o+ is equal.  +o+ may be any object which ::coerce
-    # can turn into a SerialNumber.
-
-    def ==(o)
-      SerialNumber.coerce(o).to_i == to_i
-    rescue ArgumentError
-      false
-    end
-
     # Add this object's value to target, shifting it left as many
     # digts as are needed to make room.
+    # @param [Integer] target The target to be shifted and added to
+    # @param long_mailer_id truthy if the mailer ID is long (9 digits).
+    # @return [Integer] The new value of the target
 
     def shift_and_add_to(target, long_mailer_id)
       target * 10 ** num_digits(long_mailer_id) + to_i
     end
 
-    # Return the integer value of the serial number
-
-    def to_i
-      @value
-    end
+    # @!endgroup
 
     private
 

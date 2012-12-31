@@ -2,14 +2,17 @@ require 'USPS-intelligent-barcode/NumericConversions'
 
 module Imb
 
-  # Calculates the Intelligent Mail Barcode CRC.  This class is
-  # internal and may change.
+  # @!group Internal
+
+  # Calculates the Intelligent Mail Barcode CRC.
 
   class Crc
 
     extend NumericConversions
 
-    # Calculate a CRC.  +binary_data+ on an Integer.
+    # Calculate a CRC.
+    # @param [Integer] binary_data A 102-bit integer
+    # @return [Integer] An 11-bit CRC
 
     def self.crc(binary_data)
       crc = MASK

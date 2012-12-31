@@ -8,7 +8,7 @@ module Imb
     RANGE = 0..999
 
     # Turn the argument into a ServiceType if possible.  Accepts:
-    # * ServiceType
+    # * {ServiceType}
     # * String
     # * Integer
 
@@ -25,23 +25,14 @@ module Imb
       end
     end
 
-    # Create a service type from an integer
+    # @param [Integer] value
 
     def initialize(value)
       @value = value
     end
 
-    # Validate the value.  Raises ArgumentError if out of range.
-    # * +long_mailer_id+ - truthy if the mailer ID is long (9 digits).
-
-    def validate(long_mailer_id)
-      unless (RANGE) === @value
-        raise ArgumentError, "Must be #{RANGE}"
-      end
-    end
-
-    # Return true if +o+ is equal.  +o+ may be any object which ::coerce
-    # can turn into a ServiceType.
+    # Return true if this object is equal to o
+    # @param [Object] o Any object acceptable to {.coerce}
 
     def ==(o)
       ServiceType.coerce(o).to_i == to_i
@@ -49,18 +40,35 @@ module Imb
       false
     end
 
+    # @return [Integer] The value of the service type
+
+    def to_i
+      @value
+    end
+
+    # @!group Internal
+
+    # Validate the value.
+    # @param long_mailer_id truthy if the mailer ID is long (9 digits).
+    # @raise ArgumentError if invalid
+
+    def validate(long_mailer_id)
+      unless (RANGE) === @value
+        raise ArgumentError, "Must be #{RANGE}"
+      end
+    end
+
     # Add this object's value to target, shifting it left as many
     # digts as are needed to make room.
+    # @param [Integer] target The target to be shifted and added to
+    # @param long_mailer_id truthy if the mailer ID is long (9 digits).
+    # @return [Integer] The new value of the target
 
     def shift_and_add_to(target, long_mailer_id)
       target * 10 ** NUM_DIGITS + to_i
     end
 
-    # Return the integer value of the service type
-
-    def to_i
-      @value
-    end
+    # @!endgroup
 
     private
 
