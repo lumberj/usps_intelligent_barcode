@@ -8,13 +8,13 @@ module Imb
 
   class Crc
 
-    extend NumericConversions
+    include NumericConversions
 
     # Calculate a CRC.
     # @param [Integer] binary_data A 102-bit integer
     # @return [Integer] An 11-bit CRC
 
-    def self.crc(binary_data)
+    def crc(binary_data)
       crc = MASK
       bytes = numeric_to_bytes(binary_data, NUM_INPUT_BYTES)
       crc = crc_byte(crc, bytes.first, LEADING_BITS_TO_IGNORE)
@@ -34,7 +34,7 @@ module Imb
     MASK = (1 << CRC_BITS) - 1
     NUM_INPUT_BYTES = 13
 
-    def self.crc_byte(crc, byte, leading_bits_to_ignore)
+    def crc_byte(crc, byte, leading_bits_to_ignore)
       num_bits = BITS_PER_BYTE - leading_bits_to_ignore
       data = byte << CRC_BITS - BITS_PER_BYTE + leading_bits_to_ignore
       num_bits.times do

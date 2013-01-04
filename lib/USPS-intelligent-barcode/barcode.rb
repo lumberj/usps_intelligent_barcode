@@ -1,4 +1,5 @@
 require 'USPS-intelligent-barcode/codeword_map'
+require 'USPS-intelligent-barcode/crc'
 
 # The namespace for everything in this library.
 
@@ -70,6 +71,7 @@ module Imb
     # :stopdoc:
     BAR_MAP = BarMap.new
     CODEWORD_MAP = CodewordMap.new
+    CRC = Crc.new
     # :startdoc:
 
     def validate_components
@@ -100,7 +102,7 @@ module Imb
     memoize :binary_data
 
     def frame_check_sequence
-      Crc.crc(binary_data)
+      CRC.crc(binary_data)
     end
     memoize :frame_check_sequence
 
