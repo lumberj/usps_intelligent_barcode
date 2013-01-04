@@ -1,4 +1,4 @@
-require 'USPS-intelligent-barcode/NumericConversions'
+require 'USPS-intelligent-barcode/numeric_conversions'
 
 module Imb
 

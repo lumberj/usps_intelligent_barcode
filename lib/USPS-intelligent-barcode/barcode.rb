@@ -1,4 +1,4 @@
-require 'USPS-intelligent-barcode/CodewordMap'
+require 'USPS-intelligent-barcode/codeword_map'
 
 # The namespace for everything in this library.
 

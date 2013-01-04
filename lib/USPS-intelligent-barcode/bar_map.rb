@@ -1,4 +1,4 @@
-require 'USPS-intelligent-barcode/CharacterPosition'
+require 'USPS-intelligent-barcode/character_position'
 
 # @!group Internal
 
