@@ -24,7 +24,7 @@ Jeweler::Tasks.new do |gem|
      "Mail barcode.  It generates the string of characters "\
      "to print with one of the USPS Intelligent Mail barcode "\
      "fonts.")
-  gem.email = "wayne@databill.com"
+  gem.email = "wconrad@yagni.com"
   gem.authors = ["Wayne Conrad"]
   # dependencies defined in Gemfile
 end
