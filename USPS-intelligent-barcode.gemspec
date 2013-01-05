@@ -5,13 +5,13 @@
 
 Gem::Specification.new do |s|
   s.name = "USPS-intelligent-barcode"
-  s.version = "0.2.3"
+  s.version = "0.2.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Wayne Conrad"]
-  s.date = "2012-12-31"
+  s.date = "2013-01-05"
   s.description = "A pure Ruby library to generate a USPS Intelligent Mail barcode.  It generates the string of characters to print with one of the USPS Intelligent Mail barcode fonts."
-  s.email = "wayne@databill.com"
+  s.email = "wconrad@yagni.com"
   s.extra_rdoc_files = [
     "LICENSE.md",
     "README.rdoc"
@@ -26,32 +26,34 @@ Gem::Specification.new do |s|
     "VERSION",
     "examples/example.rb",
     "lib/USPS-intelligent-barcode.rb",
-    "lib/USPS-intelligent-barcode/BarMap.rb",
-    "lib/USPS-intelligent-barcode/BarPosition.rb",
-    "lib/USPS-intelligent-barcode/Barcode.rb",
-    "lib/USPS-intelligent-barcode/BarcodeId.rb",
-    "lib/USPS-intelligent-barcode/CharacterPosition.rb",
-    "lib/USPS-intelligent-barcode/CodewordMap.rb",
-    "lib/USPS-intelligent-barcode/Crc.rb",
-    "lib/USPS-intelligent-barcode/MailerId.rb",
-    "lib/USPS-intelligent-barcode/NumericConversions.rb",
-    "lib/USPS-intelligent-barcode/RoutingCode.rb",
-    "lib/USPS-intelligent-barcode/SerialNumber.rb",
-    "lib/USPS-intelligent-barcode/ServiceType.rb",
+    "lib/USPS-intelligent-barcode/bar_map.rb",
+    "lib/USPS-intelligent-barcode/bar_position.rb",
+    "lib/USPS-intelligent-barcode/bar_symbol.rb",
     "lib/USPS-intelligent-barcode/bar_to_character_mapping.yml",
+    "lib/USPS-intelligent-barcode/barcode.rb",
+    "lib/USPS-intelligent-barcode/barcode_id.rb",
+    "lib/USPS-intelligent-barcode/character_position.rb",
+    "lib/USPS-intelligent-barcode/codeword_map.rb",
     "lib/USPS-intelligent-barcode/codeword_to_character_mapping.yml",
-    "spec/BarMap_spec.rb",
-    "spec/BarPosition_spec.rb",
-    "spec/BarcodeId_spec.rb",
-    "spec/Barcode_spec.rb",
-    "spec/CharacterPosition_spec.rb",
-    "spec/CodewordMap_spec.rb",
-    "spec/Crc_spec.rb",
-    "spec/MailerId_spec.rb",
-    "spec/NumericConversions_spec.rb",
-    "spec/RoutingCode_spec.rb",
-    "spec/SerialNumber_spec.rb",
-    "spec/ServiceType_spec.rb",
+    "lib/USPS-intelligent-barcode/crc.rb",
+    "lib/USPS-intelligent-barcode/mailer_id.rb",
+    "lib/USPS-intelligent-barcode/numeric_conversions.rb",
+    "lib/USPS-intelligent-barcode/routing_code.rb",
+    "lib/USPS-intelligent-barcode/serial_number.rb",
+    "lib/USPS-intelligent-barcode/service_type.rb",
+    "spec/bar_map_spec.rb",
+    "spec/bar_position_spec.rb",
+    "spec/bar_symbol_spec.rb",
+    "spec/barcode_id_spec.rb",
+    "spec/barcode_spec.rb",
+    "spec/character_position_spec.rb",
+    "spec/codeword_map_spec.rb",
+    "spec/crc_spec.rb",
+    "spec/mailer_id_spec.rb",
+    "spec/numeric_conversions_spec.rb",
+    "spec/routing_code_spec.rb",
+    "spec/serial_number_spec.rb",
+    "spec/service_type_spec.rb",
     "spec/spec_helper.rb"
   ]
   s.homepage = "http://github.com/wconrad/USPS-intelligent-barcode"
@@ -64,27 +66,30 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<andand>, ["~> 1.3"])
-      s.add_runtime_dependency(%q<memoizer>, ["~> 1.0"])
-      s.add_development_dependency(%q<jeweler>, ["~> 1.8"])
-      s.add_development_dependency(%q<rspec>, ["~> 2.12"])
-      s.add_development_dependency(%q<simplecov>, ["~> 0.7"])
-      s.add_development_dependency(%q<yard>, ["~> 0.8"])
+      s.add_runtime_dependency(%q<andand>, ["~> 1.3.3"])
+      s.add_runtime_dependency(%q<memoizer>, ["~> 1.0.1"])
+      s.add_development_dependency(%q<jeweler>, ["~> 1.8.4"])
+      s.add_development_dependency(%q<rspec>, ["~> 2.12.0"])
+      s.add_development_dependency(%q<simplecov>, ["~> 0.7.1"])
+      s.add_development_dependency(%q<yard>, ["~> 0.8.3"])
+      s.add_development_dependency(%q<rake>, ["~> 10.0.3"])
     else
-      s.add_dependency(%q<andand>, ["~> 1.3"])
-      s.add_dependency(%q<memoizer>, ["~> 1.0"])
-      s.add_dependency(%q<jeweler>, ["~> 1.8"])
-      s.add_dependency(%q<rspec>, ["~> 2.12"])
-      s.add_dependency(%q<simplecov>, ["~> 0.7"])
-      s.add_dependency(%q<yard>, ["~> 0.8"])
+      s.add_dependency(%q<andand>, ["~> 1.3.3"])
+      s.add_dependency(%q<memoizer>, ["~> 1.0.1"])
+      s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
+      s.add_dependency(%q<rspec>, ["~> 2.12.0"])
+      s.add_dependency(%q<simplecov>, ["~> 0.7.1"])
+      s.add_dependency(%q<yard>, ["~> 0.8.3"])
+      s.add_dependency(%q<rake>, ["~> 10.0.3"])
     end
   else
-    s.add_dependency(%q<andand>, ["~> 1.3"])
-    s.add_dependency(%q<memoizer>, ["~> 1.0"])
-    s.add_dependency(%q<jeweler>, ["~> 1.8"])
-    s.add_dependency(%q<rspec>, ["~> 2.12"])
-    s.add_dependency(%q<simplecov>, ["~> 0.7"])
-    s.add_dependency(%q<yard>, ["~> 0.8"])
+    s.add_dependency(%q<andand>, ["~> 1.3.3"])
+    s.add_dependency(%q<memoizer>, ["~> 1.0.1"])
+    s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
+    s.add_dependency(%q<rspec>, ["~> 2.12.0"])
+    s.add_dependency(%q<simplecov>, ["~> 0.7.1"])
+    s.add_dependency(%q<yard>, ["~> 0.8.3"])
+    s.add_dependency(%q<rake>, ["~> 10.0.3"])
   end
 end
 
