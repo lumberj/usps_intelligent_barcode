@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'rubygems'
-require 'USPS-intelligent-barcode'
+require 'usps_intelligent_barcode'
 
 barcode_id = '01'
 service_type = '234'

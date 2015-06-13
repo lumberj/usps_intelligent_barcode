@@ -1,3 +1,7 @@
+# Development
+
+* Fixed leftovers from old name
+
 # 0.3.0
 
 * Ruby 2.1 and 2.2 supported
