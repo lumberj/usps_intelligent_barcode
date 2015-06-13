@@ -1,5 +1,6 @@
-# Development
+# 0.3.0
 
+* Ruby 2.1 and 2.2 supported
 * Ruby 1.8.7 no longer supported
 * Renamed gem from USPS-intelligent-barcode to usps_intelligent_barcode
 	
