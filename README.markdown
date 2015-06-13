@@ -1,23 +1,21 @@
-= USPS-intelligent-barcode
+USPS-intelligent-barcode is a pure ruby gem to generate a USPS IMB
+(Intelligent Mail Barcode).  More specifically, it generates the
+string of characters you should print using one of the [USPS
+Intelligent Barcode
+fonts](https://ribbs.usps.gov/onecodesolution/download.cfm).
 
-USPS-intelligent-barcode is a pure ruby gem to generate a USPS
-Intelligent Mail Barcode.  More specifically, it generates the string
-of characters you should print using one of the {USPS Intelligent
-Barcode fonts}[https://ribbs.usps.gov/onecodesolution/download.cfm].
+# ORIGIN
 
-== FORKED FROM
+This project was forked from Ryan Taylor's
+https://github.com/rtlong/USPS-intelligent-barcode Long, in order to
+add tests and refactor.  It is _not_ a drop-in replacement: I renamed
+most methods and classes, and eliminated the #draw method.
 
-This project was forked from
-https://github.com/rtlong/USPS-intelligent-barcode by Ryan Taylor
-Long, in order to add tests and refactor.  It is _not_ a drop-in
-replacement: I renamed most methods and classes, and eliminated the
-#draw method.
-
-== INSTALL
+# INSTALL
 
     $ gem install USPS-intelligent-barcode
 
-== EXAMPLE
+# EXAMPLE
 
     #!/usr/bin/env ruby
     
@@ -37,20 +35,20 @@ replacement: I renamed most methods and classes, and eliminated the
     p barcode.barcode_letters
     # => "AADTFFDFTDADTAADAATFDTDDAAADDTDTTDAFADADDDTFFFDDTTTADFAAADFTDAADA"
 
-== STANDARD
+# STANDARD
 
 This gem is based upon standard
-{USPS-B-3200G}[https://ribbs.usps.gov/intelligentmail_mailpieces/documents/tech_guides/SPUSPSG.pdf]
+[USPS-B-3200G](https://ribbs.usps.gov/intelligentmail_mailpieces/documents/tech_guides/SPUSPSG.pdf)
 
-== RUBY VERSIONS
+# RUBY VERSIONS
 
 The tests are known to pass in MRI 1.8.7, MRI 1.9.3 and MRI 2.0.0.
 
-== WHOAMI
+# WHOAMI
 
-Wayne Conrad <wconrad@yagni.com>
+Wayne Conrad <kf7qga@gmail.com>
 
-== CREDITS
+# CREDITS
 
 Thanks to Ryan Taylor Long for his original work, without which I
 would have been lost in the USPS specification.
