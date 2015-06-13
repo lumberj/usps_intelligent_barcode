@@ -1,3 +1,8 @@
+[![Gem Version](https://badge.fury.io/rb/usps_intelligent_barcode.png)](http://badge.fury.io/rb/usps_intelligent_barcode)
+[![Dependency Status](https://gemnasium.com/wconrad/usps_intelligent_barcode.svg)](https://gemnasium.com/wconrad/usps_intelligent_barcode)
+[![Build Status](https://travis-ci.org/wconrad/usps_intelligent_barcode.png)](https://travis-ci.org/wconrad/usps_intelligent_barcode)
+[![Code Climate](https://codeclimate.com/github/wconrad/usps_intelligent_barcode.png)](https://codeclimate.com/github/wconrad/usps_intelligent_barcode)
+
 USPS-intelligent-barcode is a pure ruby gem to generate a USPS IMB
 (Intelligent Mail Barcode).  More specifically, it generates the
 string of characters you should print using one of the [USPS
