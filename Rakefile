@@ -23,7 +23,8 @@ Jeweler::Tasks.new do |gem|
     ("A pure Ruby library to generate a USPS Intelligent "\
      "Mail barcode.  It generates the string of characters "\
      "to print with one of the USPS Intelligent Mail barcode "\
-     "fonts.")
+     "fonts.  "\
+     "NOTE: Deprecated.  Please use usps_intelligent_barcode instead.\n")
   gem.email = "wconrad@yagni.com"
   gem.authors = ["Wayne Conrad"]
   gem.post_install_message = <<-MESSAGE

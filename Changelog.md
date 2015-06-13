@@ -1,3 +1,11 @@
+### 0.2.7
+
+Add deprecation warning to gem description
+
+### 0.2.6
+
+Add deprecation warnings on use and install
+
 ### 0.2.5
 
 Enhancements
