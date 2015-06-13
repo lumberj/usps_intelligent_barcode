@@ -42,7 +42,17 @@ This gem is based upon standard
 
 # RUBY VERSIONS
 
-The tests are known to pass in MRI 1.8.7, MRI 1.9.3 and MRI 2.0.0.
+These Ruby versions are supported (these are the rvm platform names):
+
+* jruby-1.7
+* ruby-1.9.3
+* ruby-2.0
+* ruby-2.1
+* ruby-2.2
+
+For ruby-1.8.7 please see the deprecated
+[USPS-intelligent-barcode](https://rubygems.org/gems/USPS-intelligent-barcode)
+gem.
 
 # WHOAMI
 

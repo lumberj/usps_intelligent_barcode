@@ -15,8 +15,8 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "USPS-intelligent-barcode"
-  gem.homepage = "http://github.com/wconrad/USPS-intelligent-barcode"
+  gem.name = "usps_intelligent_barcode"
+  gem.homepage = "http://github.com/wconrad/usps_intelligent_barcode"
   gem.license = "MIT"
   gem.summary = %Q{Generates a USPS Intelligent Mail Barcode.}
   gem.description =
