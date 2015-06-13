@@ -70,27 +70,27 @@ module Imb
 
       context 'empty' do
         let(:s) {''}
-        it {should == [nil, nil, nil]}
+        it {is_expected.to eq([nil, nil, nil])}
       end
 
       context 'zip' do
         let(:s) {'85308'}
-        it {should == ['85308', nil, nil]}
+        it {is_expected.to eq(['85308', nil, nil])}
       end
 
       context 'zip, plus4' do
         let(:s) {'853081465'}
-        it {should == ['85308', '1465', nil]}
+        it {is_expected.to eq(['85308', '1465', nil])}
       end
 
       context 'zip, plu4, delivery_point' do
         let(:s) {'85308146502'}
-        it {should == ['85308', '1465', '02']}
+        it {is_expected.to eq(['85308', '1465', '02'])}
       end
 
       context 'non-digits' do
         let(:s) {'(85308 1465 02)'}
-        it {should == ['85308', '1465', '02']}
+        it {is_expected.to eq(['85308', '1465', '02'])}
       end
 
       context 'incorrect length' do
@@ -155,24 +155,24 @@ module Imb
       def o4 ; RoutingCode.new(85308, 1466, 1) ; end
       def o5 ; RoutingCode.new(85309, 1465, 1) ; end
       def o6 ; Object.new ; end
-      specify {o1.should == o1}
-      specify {o1.should == o2}
-      specify {o1.should_not == o3}
-      specify {o1.should_not == o4}
-      specify {o1.should_not == o5}
-      specify {o1.should_not == o6}
+      specify {expect(o1).to eq(o1)}
+      specify {expect(o1).to eq(o2)}
+      specify {expect(o1).not_to eq(o3)}
+      specify {expect(o1).not_to eq(o4)}
+      specify {expect(o1).not_to eq(o5)}
+      specify {expect(o1).not_to eq(o6)}
     end
 
     describe '#validate' do
       let(:routing_code) {RoutingCode.new(nil, nil, nil)}
-      let(:long_mailer_id?) {mock 'long_mailer_id?'}
+      let(:long_mailer_id?) {double 'long_mailer_id?'}
       specify {routing_code.validate(long_mailer_id?)}
     end
 
     describe '#shift_and_add_to' do
       let(:routing_code) {RoutingCode.new(85308, 1465, 2)}
-      let(:long_mailer_id?) {mock 'long mailer id'}
-      specify {routing_code.shift_and_add_to(1, long_mailer_id?).should == 186308246503}
+      let(:long_mailer_id?) {double 'long mailer id'}
+      specify {expect(routing_code.shift_and_add_to(1, long_mailer_id?)).to eq(186308246503)}
     end
 
   end

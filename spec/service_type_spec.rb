@@ -45,15 +45,15 @@ module Imb
       def o2 ; 1 ; end
       def o3 ; ServiceType.new(2) ; end
       def o4 ; Object.new ; end
-      specify {o1.should == o1}
-      specify {o1.should == o2}
-      specify {o1.should_not == o3}
-      specify {o1.should_not == o4}
+      specify {expect(o1).to eq(o1)}
+      specify {expect(o1).to eq(o2)}
+      specify {expect(o1).not_to eq(o3)}
+      specify {expect(o1).not_to eq(o4)}
     end
 
     describe '#validate' do
 
-      let(:long_mailer_id?) {mock 'long_mailer_id?'}
+      let(:long_mailer_id?) {double 'long_mailer_id?'}
 
       def validate(value)
         ServiceType.new(value).validate(long_mailer_id?)
@@ -84,8 +84,8 @@ module Imb
 
     describe '#shift_and_add_to' do
       let(:service_type) {ServiceType.new(999)}
-      let(:long_mailer_id?) {mock 'long mailer id'}
-      specify {service_type.shift_and_add_to(1, long_mailer_id?).should == 1999}
+      let(:long_mailer_id?) {double 'long mailer id'}
+      specify {expect(service_type.shift_and_add_to(1, long_mailer_id?)).to eq(1999)}
     end
 
   end

@@ -45,15 +45,15 @@ module Imb
       def o2 ; 1 ; end
       def o3 ; MailerId.new(2) ; end
       def o4 ; Object.new ; end
-      specify {o1.should == o1}
-      specify {o1.should == o2}
-      specify {o1.should_not == o3}
-      specify {o1.should_not == o4}
+      specify {expect(o1).to eq(o1)}
+      specify {expect(o1).to eq(o2)}
+      specify {expect(o1).not_to eq(o3)}
+      specify {expect(o1).not_to eq(o4)}
     end
 
     describe '#validate' do
 
-      let(:long_mailer_id?) {mock 'long_mailer_id?'}
+      let(:long_mailer_id?) {double 'long_mailer_id?'}
 
       def validate(value)
         MailerId.new(value).validate(long_mailer_id?)
@@ -93,12 +93,12 @@ module Imb
 
       context 'short' do
         let(:value) {0}
-        its(:long?) {should be_false}
+        its(:long?) {should be_falsey}
       end
 
       context 'long' do
         let(:value) {900_000_000}
-        its(:long?) {should be_true}
+        its(:long?) {should be_truthy}
       end
 
     end
@@ -108,13 +108,13 @@ module Imb
       context 'short' do
         let(:mailer_id) {MailerId.new(999999)}
         let(:long_mailer_id?) {false}
-        specify {mailer_id.shift_and_add_to(1, long_mailer_id?).should == 1999999}
+        specify {expect(mailer_id.shift_and_add_to(1, long_mailer_id?)).to eq(1999999)}
       end
 
       context 'long' do
         let(:mailer_id) {MailerId.new(999999999)}
         let(:long_mailer_id?) {true}
-        specify {mailer_id.shift_and_add_to(1, long_mailer_id?).should == 1999999999}
+        specify {expect(mailer_id.shift_and_add_to(1, long_mailer_id?)).to eq(1999999999)}
       end
 
     end

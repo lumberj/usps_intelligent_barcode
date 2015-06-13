@@ -14,7 +14,7 @@ module Imb
     let(:codeword_map) {CodewordMap.new}
 
     specify do
-      codeword_map.characters(codewords).should == characters
+      expect(codeword_map.characters(codewords)).to eq(characters)
     end
 
   end

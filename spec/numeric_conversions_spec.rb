@@ -9,11 +9,11 @@ module Imb
     describe '#numeric_to_bytes' do
 
       specify do
-        numeric_to_bytes(0x1234).should == [0x12, 0x34]
+        expect(numeric_to_bytes(0x1234)).to eq([0x12, 0x34])
       end
 
       specify do
-        numeric_to_bytes(0x1234, 3).should == [0, 0x12, 0x34]
+        expect(numeric_to_bytes(0x1234, 3)).to eq([0, 0x12, 0x34])
       end
 
     end

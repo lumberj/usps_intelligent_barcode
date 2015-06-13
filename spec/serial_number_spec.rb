@@ -45,10 +45,10 @@ module Imb
       def o2 ; 1 ; end
       def o3 ; SerialNumber.new(2) ; end
       def o4 ; Object.new ; end
-      specify {o1.should == o1}
-      specify {o1.should == o2}
-      specify {o1.should_not == o3}
-      specify {o1.should_not == o4}
+      specify {expect(o1).to eq(o1)}
+      specify {expect(o1).to eq(o2)}
+      specify {expect(o1).not_to eq(o3)}
+      specify {expect(o1).not_to eq(o4)}
     end
 
     describe '#validate' do
@@ -102,13 +102,13 @@ module Imb
       context 'long mailer id' do
         let(:value) {999_999}
         let(:long_mailer_id?) {true}
-        specify {shift_and_add_to.should == 1_999_999}
+        specify {expect(shift_and_add_to).to eq(1_999_999)}
       end
 
       context 'short mailer id' do
         let(:value) {999_999_999}
         let(:long_mailer_id?) {false}
-        specify {shift_and_add_to.should == 1_999_999_999}
+        specify {expect(shift_and_add_to).to eq(1_999_999_999)}
       end
     end
 

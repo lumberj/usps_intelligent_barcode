@@ -3,4 +3,6 @@ if RUBY_VERSION >= '1.9'
   SimpleCov.start
 end
 
+require "rspec/its"
+
 require File.expand_path('../lib/USPS-intelligent-barcode', File.dirname(__FILE__))

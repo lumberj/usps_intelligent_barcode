@@ -13,10 +13,10 @@ module Imb
         .extract_bit_from_characters(characters)
       end
 
-      specify {extract(0, 0).should == 1}
-      specify {extract(0, 1).should == 0}
-      specify {extract(1, 0).should == 0}
-      specify {extract(1, 1).should == 1}
+      specify {expect(extract(0, 0)).to eq(1)}
+      specify {expect(extract(0, 1)).to eq(0)}
+      specify {expect(extract(1, 0)).to eq(0)}
+      specify {expect(extract(1, 1)).to eq(1)}
 
     end
 

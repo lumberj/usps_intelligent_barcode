@@ -22,7 +22,7 @@ module Imb
     let(:bar_map) {BarMap.new}
 
     specify do
-      bar_map.symbols(characters).map(&:code).should == codes
+      expect(bar_map.symbols(characters).map(&:code)).to eq(codes)
     end
 
   end

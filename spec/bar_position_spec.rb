@@ -6,31 +6,31 @@ module Imb
 
     describe '#map' do
 
-      let(:ascender_bit) {mock 'ascender bit'}
-      let(:descender_bit) {mock 'descender bit'}
-      let(:characters) {mock 'array of characters'}
-      let(:descender_character_position) {mock CharacterPosition}
-      let(:ascender_character_position) {mock CharacterPosition}
+      let(:ascender_bit) {double 'ascender bit'}
+      let(:descender_bit) {double 'descender bit'}
+      let(:characters) {double 'array of characters'}
+      let(:descender_character_position) {double CharacterPosition}
+      let(:ascender_character_position) {double CharacterPosition}
       let(:bar_position) do
         BarPosition.new(descender_character_position,
                         ascender_character_position)
       end
-      let(:bar_symbol) {mock BarSymbol}
+      let(:bar_symbol) {double BarSymbol}
 
       before(:each) do
-        descender_character_position.stub(:extract_bit_from_characters)\
+        allow(descender_character_position).to receive(:extract_bit_from_characters)\
         .with(characters)\
         .and_return(descender_bit)
-        ascender_character_position.stub(:extract_bit_from_characters)\
+        allow(ascender_character_position).to receive(:extract_bit_from_characters)\
         .with(characters)\
         .and_return(ascender_bit)
-        BarSymbol.stub(:make)\
+        allow(BarSymbol).to receive(:make)\
         .with(ascender_bit, descender_bit)\
         .and_return(bar_symbol)
       end
 
       specify do
-        bar_position.map(characters).should == bar_symbol
+        expect(bar_position.map(characters)).to eq(bar_symbol)
       end
 
     end
