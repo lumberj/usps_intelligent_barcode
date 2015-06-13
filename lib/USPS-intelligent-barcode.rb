@@ -15,3 +15,7 @@ require 'USPS-intelligent-barcode/numeric_conversions'
 require 'USPS-intelligent-barcode/routing_code'
 require 'USPS-intelligent-barcode/serial_number'
 require 'USPS-intelligent-barcode/service_type'
+
+warn "[DEPRECATION] This gem has been renamed to usps_intelligent_barcode "\
+     "and will no longer be supported.  Please switch to "\
+     "usps_intelligent_barcode as soon as possible."

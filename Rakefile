@@ -26,6 +26,13 @@ Jeweler::Tasks.new do |gem|
      "fonts.")
   gem.email = "wconrad@yagni.com"
   gem.authors = ["Wayne Conrad"]
+  gem.post_install_message = <<-MESSAGE
+    The USPS-intelligent-barcode gem has been deprecated and has been
+    replaced by usps-intelligent-barcode.
+    See: https://rubygems.org/gems/usps_intelligent_barcode
+    And: https://github.com/wconrad/usps_intellgent_barcode
+  MESSAGE
+  
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new

@@ -1,3 +1,9 @@
+= DEPRECATED
+
+This gem has been renamed to usps_intelligent_barcode and will no
+longer be maintained.  Please switch to usps_intelligent_barcode as
+soon as possible.
+
 = USPS-intelligent-barcode
 
 USPS-intelligent-barcode is a pure ruby gem to generate a USPS
