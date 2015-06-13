@@ -40,3 +40,6 @@ DEPENDENCIES
   rspec
   simplecov
   yard
+
+BUNDLED WITH
+   1.10.3
