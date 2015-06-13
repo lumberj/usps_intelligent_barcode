@@ -88,3 +88,6 @@ DEPENDENCIES
   rspec-its (~> 1.0)
   simplecov (~> 0.10.0)
   yard (~> 0.8.5)
+
+BUNDLED WITH
+   1.10.3
