@@ -9,5 +9,5 @@ group :development do
   gem 'rspec-its', '~> 1.0'
   gem 'simplecov', '~> 0.11.0'
   gem 'yard', '~> 0.8.5'
-  gem 'rake', '~> 10.0'
+  gem 'rake', '~> 11.2'
 end
