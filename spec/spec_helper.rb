@@ -1,6 +1,7 @@
-if RUBY_VERSION >= '1.9'
+begin
   require 'simplecov'
   SimpleCov.start
+rescue LoadError
 end
 
 require "rspec/its"
