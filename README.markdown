@@ -43,7 +43,9 @@ most methods and classes, and eliminated the #draw method.
 # STANDARD
 
 This gem is based upon standard
-[USPS-B-3200G](https://ribbs.usps.gov/intelligentmail_mailpieces/documents/tech_guides/SPUSPSG.pdf)
+[USPS-B-3200H](https://ribbs.usps.gov/intelligentmail_mailpieces/documents/tech_guides/USPSB3200IntelligentMailBarcode4State.pdf),
+which is linked to from [Intelligent Mail Barcode for
+Mailpieces](https://ribbs.usps.gov/index.cfm?page=intellmailmailpieces)
 
 # RUBY VERSIONS
 
