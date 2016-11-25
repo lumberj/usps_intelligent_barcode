@@ -56,6 +56,7 @@ These Ruby versions are supported (these are the rvm platform names):
 * ruby-2.0
 * ruby-2.1
 * ruby-2.2
+* ruby-2.3
 
 For ruby-1.8.7 please see the deprecated
 [USPS-intelligent-barcode](https://rubygems.org/gems/USPS-intelligent-barcode)
