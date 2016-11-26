@@ -9,18 +9,18 @@ string of characters you should print using one of the [USPS
 Intelligent Barcode
 fonts](https://ribbs.usps.gov/onecodesolution/download.cfm).
 
-# ORIGIN
+# Origin
 
 This project was forked from Ryan Taylor's
 https://github.com/rtlong/USPS-intelligent-barcode Long, in order to
 add tests and refactor.  It is _not_ a drop-in replacement: I renamed
 most methods and classes, and eliminated the #draw method.
 
-# INSTALL
+# Install
 
     $ gem install USPS-intelligent-barcode
 
-# EXAMPLE
+# Example
 
     #!/usr/bin/env ruby
     
@@ -40,14 +40,14 @@ most methods and classes, and eliminated the #draw method.
     p barcode.barcode_letters
     # => "AADTFFDFTDADTAADAATFDTDDAAADDTDTTDAFADADDDTFFFDDTTTADFAAADFTDAADA"
 
-# STANDARD
+# Standard
 
 This gem is based upon standard
 [USPS-B-3200H](https://ribbs.usps.gov/intelligentmail_mailpieces/documents/tech_guides/USPSB3200IntelligentMailBarcode4State.pdf),
 which is linked to from [Intelligent Mail Barcode for
 Mailpieces](https://ribbs.usps.gov/index.cfm?page=intellmailmailpieces)
 
-# RUBY VERSIONS
+# Supported Ruby Versions
 
 These Ruby versions are supported (these are the rvm platform names):
 
@@ -62,11 +62,11 @@ For ruby-1.8.7 please see the deprecated
 [USPS-intelligent-barcode](https://rubygems.org/gems/USPS-intelligent-barcode)
 gem.
 
-# WHOAMI
+# whoami
 
 Wayne Conrad <kf7qga@gmail.com>
 
-# CREDITS
+# Credits
 
 Thanks to Ryan Taylor Long for his original work, without which I
 would have been lost in the USPS specification.

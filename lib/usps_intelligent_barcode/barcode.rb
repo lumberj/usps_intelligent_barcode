@@ -6,7 +6,8 @@ require 'usps_intelligent_barcode/crc'
 # The namespace for everything in this library.
 module Imb
 
-  # This class represents a barcode.
+  # This class turns a collection of fields into a string of symbols
+  # for printing using a barcode font.
   class Barcode
 
     include Memoizer
@@ -25,8 +26,6 @@ module Imb
 
     # @return [RoutingCode]
     attr_reader :routing_code
-
-    # @param 
 
     # Create a new barcode
     #
