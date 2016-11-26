@@ -1,3 +1,27 @@
+# Represents the table from the spec. that controls how the bits of
+# the "characters" are mapped to barcode positions.  Each line of this
+# file represents a single barcode position (or vertical line), with
+# the leftmost position first.
+#
+# Let's decode the first line:
+#
+#     [
+#       [
+#         7,    # descender character index (0..)
+#         2,    # descender bit number (0..)
+#       ],
+#       [
+#         4,    # ascender character index (0..)
+#         3,    #ascender bit number (0..)
+#       ]
+#     ]
+#
+# This means that the first barcode position's ascender is controlled
+# by bit 2 of character 7; the descender is controlled by bit 3 of
+# character 4.
+#
+# See spec. section 10.0 ("Appendix E -- Tables for Converting
+# Characters"), Table 22 ("Bar to Character Mapping")
 ---
 - [[7, 2], [4, 3]]
 - [[1, 10], [0, 0]]

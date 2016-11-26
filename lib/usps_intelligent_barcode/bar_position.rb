@@ -2,14 +2,17 @@ module Imb
 
   # @!group Internal
 
-  # Represents a position (one line) in the barcode.  This class is
-  # internal and may change.
-
+  # Represents a position (a vertical bar) in the barcode.  This class
+  # is internal and may change.
+  #
+  # Each bar represents two bits, but which two bits it represents is
+  # determined by the "Bar to Character Mapping" table in the
+  # specification (see Table 22, "Bar to Character Mapping", appendix
+  # E) in the specification linked to in the README.
   class BarPosition
 
-    # @param [CharacterPosition] descender_character_position
-    # @param [CharacterPosition] ascender_character_position
-
+    # @param descender_character_position [CharacterPosition]
+    # @param ascender_character_position [CharacterPosition]
     def initialize(descender_character_position, ascender_character_position)
       @descender_character_position = descender_character_position
       @ascender_character_position = ascender_character_position
@@ -17,12 +20,13 @@ module Imb
 
     # Given an array of characters, return a symbol for this
     # barcode position.
-    # @param [[Integer]] characters character codes
+    # @param characters [Array<Integer>] character codes
     # @return [BarSymbol] symbol code
-
     def map(characters)
-      BarSymbol.make(ascender_bit(characters),
-                     descender_bit(characters))
+      BarSymbol.make(
+        ascender_bit(characters),
+        descender_bit(characters),
+      )
     end
 
     private

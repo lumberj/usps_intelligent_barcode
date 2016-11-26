@@ -1,7 +1,6 @@
 module Imb
 
   # This class represents a mailer ID.
-
   class MailerId
 
     # The allowable range for a short (6-digit) mailer ID
@@ -19,7 +18,6 @@ module Imb
     # * Integer
     # @return [MailerId]
     # @raise [ArgumentError] If the argument cannot be coerced
-
     def self.coerce(o)
       case o
       when MailerId
@@ -33,15 +31,16 @@ module Imb
       end
     end
 
-    # @param [Integer] value
-
+    # Construct an instance.
+    #
+    # @param value [Integer]
     def initialize(value)
       @value = value
     end
 
     # Return true if this object is equal to o
-    # @param [Object] o Any object acceptable to {.coerce}
-
+    #
+    # @param o [Object] Any object acceptable to {.coerce}
     def ==(o)
       MailerId.coerce(o).to_i == to_i
     rescue ArgumentError
@@ -49,7 +48,6 @@ module Imb
     end
 
     # @return [Integer] The value of the mailer ID
-
     def to_i
       @value
     end
@@ -57,15 +55,15 @@ module Imb
     # @!group Internal
 
     # Return true if this is a long (9 digit) mailer ID
-
     def long?
       LONG_RANGE === @value
     end
 
     # Validate the value.
-    # @param long_mailer_id truthy if the mailer ID is long (9 digits).
+    #
+    # @param long_mailer_id [boolean] truthy if the mailer ID is long
+    #   (9 digits).
     # @raise ArgumentError if invalid
-
     def validate(long_mailer_id)
       unless in_range?
         raise ArgumentError, "Must be #{RANGES.join(' or ')}"
@@ -74,10 +72,11 @@ module Imb
     
     # Add this object's value to target, shifting it left as many
     # digts as are needed to make room.
-    # @param [Integer] target The target to be shifted and added to
-    # @param long_mailer_id truthy if the mailer ID is long (9 digits).
+    #
+    # @param target [Integer] The target to be shifted and added to
+    # @param long_mailer_id [boolean] truthy if the mailer ID is long
+    #   (9 digits).
     # @return [Integer] The new value of the target
-
     def shift_and_add_to(target, long_mailer_id)
       target * 10 ** num_digits + to_i
     end

@@ -4,9 +4,7 @@ require 'usps_intelligent_barcode/character_position'
 
 module Imb
 
-  # Maps intelligent barcode "characters" to codes that indicate what
-  # type of bar to print at each given position.
-
+  # Maps intelligent barcode "characters" to the actual barcode.
   class BarMap
 
     def initialize
@@ -15,9 +13,11 @@ module Imb
 
     # Given an array of intelligent barcode "characters", return an
     # the symbols for each position.
-    # @param [[Integer]] characters array of characters
-    # @return [[BarSymbol]] array of symbols
-
+    #
+    # @param characters [Array<Integer>] array of 13-bit "characters"
+    #   between 0 and 1364
+    # @return [Array<BarSymbol>] array of symbols,
+    #   e.g. [BarSymbol::TRACKER, BarSymbol::ASCENDER, ...]
     def symbols(characters)
       @mapping.map do |bar_position|
         bar_position.map(characters)
@@ -34,8 +34,10 @@ module Imb
       mapping_data.map do |descender, ascender|
         descender_character_position = CharacterPosition.new(*descender)
         ascender_character_position = CharacterPosition.new(*ascender)
-        BarPosition.new(descender_character_position,
-                        ascender_character_position)
+        BarPosition.new(
+          descender_character_position,
+          ascender_character_position,
+        )
       end
     end
 

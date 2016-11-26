@@ -9,7 +9,6 @@ module Imb
     # * String
     # * Integer
     # @return [SerialNumber]
-
     def self.coerce(o)
       case o
       when SerialNumber
@@ -23,15 +22,15 @@ module Imb
       end
     end
 
+    # Construct an instance.
+    #
     # @param [Integer] value
-
     def initialize(value)
       @value = value
     end
 
     # Return true if this object is equal to o
-    # @param [Object] o Any object acceptable to {.coerce}
-
+    # @param o [Object] Any object acceptable to {.coerce}
     def ==(o)
       SerialNumber.coerce(o).to_i == to_i
     rescue ArgumentError
@@ -39,7 +38,6 @@ module Imb
     end
 
     # @return [Integer] The value of the serial number
-
     def to_i
       @value
     end
@@ -47,9 +45,10 @@ module Imb
     # @!group Internal
 
     # Validate the value.
-    # @param long_mailer_id truthy if the mailer ID is long (9 digits).
+    #
+    # @param long_mailer_id [boolean] truthy if the mailer ID is long
+    #   (9 digits).
     # @raise ArgumentError if invalid
-
     def validate(long_mailer_id)
       range = 0..max_value(long_mailer_id)
       unless range === @value
@@ -59,10 +58,11 @@ module Imb
 
     # Add this object's value to target, shifting it left as many
     # digts as are needed to make room.
-    # @param [Integer] target The target to be shifted and added to
-    # @param long_mailer_id truthy if the mailer ID is long (9 digits).
+    #
+    # @param target [Integer] The target to be shifted and added to
+    # @param long_mailer_id [boolean] truthy if the mailer ID is long
+    #   (9 digits).
     # @return [Integer] The new value of the target
-
     def shift_and_add_to(target, long_mailer_id)
       target * 10 ** num_digits(long_mailer_id) + to_i
     end

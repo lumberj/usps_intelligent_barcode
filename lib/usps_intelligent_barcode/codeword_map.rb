@@ -3,7 +3,6 @@ module Imb
   # @!group Internal
 
   # Maps codewords to characters.
-
   class CodewordMap
 
     # Constructor

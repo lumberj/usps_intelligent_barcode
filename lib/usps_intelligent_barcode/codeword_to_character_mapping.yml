@@ -1,3 +1,10 @@
+# Represents the table from the spec. that maps from codewords to
+# "characters."  A codeword is an integer between 0 and 1364, so this
+# table is an array of 1365 entries.
+#
+# See spec. section 10.0 ("Appendix E -- Tables for Converting
+# Characters"), Tables 19 ("5 of 13 Characters") and 20 ("2 of 13
+# Characters")
 ---
 - 31
 - 7936

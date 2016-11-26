@@ -1,7 +1,7 @@
 module Imb
 
-  # This class represents a Barcode ID
-
+  # This class represents a Barcode ID, one of the fields that is used
+  # to generate a barcode.
   class BarcodeId
 
     # The allowable range of a barcode ID
@@ -14,6 +14,7 @@ module Imb
     # * {BarcodeId}
     # * String
     # * Integer
+    #
     # @return [BarcodeId]
     # @raise [ArgumentError] If the argument cannot be coerced
 
@@ -31,15 +32,15 @@ module Imb
     end
 
     # Create a new BarcodeId
-    # @param [Integer] value The barcode ID
-
+    #
+    # @param value [Integer] The barcode ID
     def initialize(value)
       @value = value
     end
 
     # Return true if this object is equal to o
-    # @param [Object] o Any object acceptable to {.coerce}
-
+    #
+    # @param o [Object] Any object acceptable to {.coerce}
     def ==(o)
       BarcodeId.coerce(o).to_i == to_i
     rescue ArgumentError
@@ -47,7 +48,6 @@ module Imb
     end
 
     # @return [Integer] The integer value of the barcode ID
-
     def to_i
       @value
     end
@@ -55,9 +55,10 @@ module Imb
     # @!group Internal
 
     # Validate the value.
-    # @param long_mailer_id truthy if the mailer ID is long (9 digits).
+    #
+    # @param long_mailer_id [boolean] truthy if the mailer ID is long
+    #   (9 digits).
     # @raise ArgumentError if invalid
-
     def validate(long_mailer_id)
       unless RANGE === @value
         raise ArgumentError, "Must be #{RANGE}"
@@ -69,10 +70,11 @@ module Imb
 
     # Add this object's value to target, shifting it left as many
     # digts as are needed to make room.
-    # @param [Integer] target The target to be shifted and added to
-    # @param long_mailer_id truthy if the mailer ID is long (9 digits).
+    #
+    # @param target [Integer] The target to be shifted and added to
+    # @param long_mailer_id [boolean] truthy if the mailer ID is long
+    #   (9 digits).
     # @return [Integer] The new value of the target
-
     def shift_and_add_to(target, long_mailer_id)
       target *= 10
       target += most_significant_digit

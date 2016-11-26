@@ -5,15 +5,15 @@ module Imb
   # @!group Internal
 
   # Calculates the Intelligent Mail Barcode CRC.
-
+  #
+  # See spec. section 9.1 ("CRC Generating Code")
   class Crc
 
     include NumericConversions
 
     # Calculate a CRC.
-    # @param [Integer] binary_data A 102-bit integer
+    # @param binary_data [Integer] A 102-bit integer
     # @return [Integer] An 11-bit CRC
-
     def crc(binary_data)
       crc = MASK
       bytes = numeric_to_bytes(binary_data, NUM_INPUT_BYTES)
