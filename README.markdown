@@ -66,6 +66,12 @@ gem.
 
 Wayne Conrad <kf7qga@gmail.com>
 
+# Gem versioning
+
+This library uses [Semantic Versioning](http://semver.org/).  It
+promises not to make breaking changes to its API without bumping the
+major version.
+
 # Credits
 
 Thanks to Ryan Taylor Long for his original work, without which I

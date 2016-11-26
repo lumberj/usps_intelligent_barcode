@@ -1,7 +1,9 @@
 # Development
 
+* Switch to semantic versioning.  Version 1.0.0 has the same API as
+  version 0.3.1.
+* Ruby 2.3 supported
 * Improved comments
-* Fixed leftovers from old name
 
 # 0.3.1 - 2015-06-13
 # 0.3.0 - 2015-06-13
