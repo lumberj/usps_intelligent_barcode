@@ -1,4 +1,4 @@
-# Development
+# 1.0.0 - 2016-11-26
 
 * Switch to semantic versioning.  Version 1.0.0 has the same API as
   version 0.3.1.
